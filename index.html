@@ -431,6 +431,30 @@
     <!-- End Google Tag Manager (noscript) -->
     
     <div id="root"></div>
+    
+    <!-- SPA Hash-based routing support -->
+    <script type="text/javascript">
+      // Handle URL parsing for SPA routes
+      (function() {
+        const currentPath = window.location.pathname;
+        const currentHash = window.location.hash;
+        
+        // If we have a path other than root and no hash, convert to hash-based routing
+        if (currentPath !== '/' && !currentHash) {
+          const newUrl = '/#' + currentPath + window.location.search;
+          window.history.replaceState({}, '', newUrl);
+        }
+        
+        // If we came from 404.html redirect, clean up the URL
+        if (currentHash && currentHash.startsWith('#/')) {
+          const cleanPath = currentHash.substring(1); // Remove #
+          if (cleanPath !== '/' && cleanPath !== currentPath) {
+            window.history.replaceState({}, '', cleanPath + window.location.search);
+          }
+        }
+      })();
+    </script>
+    
     <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
   </body>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xenra Nederland - Nalatenschap Regelen</title>
+  <script>
+    // Single Page Application routing fallback
+    // This redirects any 404 to the main app with the path preserved
+    const path = window.location.pathname;
+    const search = window.location.search;
+    const hash = window.location.hash;
+    
+    // Build the new URL for the SPA
+    const newUrl = '/' + (search || '') + (hash ? hash : '#' + path);
+    
+    // Redirect to index.html with the path preserved in the hash
+    window.location.replace(window.location.origin + newUrl);
+  </script>
+</head>
+<body>
+  <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+    <h1>Xenra Nederland</h1>
+    <p>Een moment geduld, u wordt doorgestuurd...</p>
+  </div>
+</body>
+</html>
